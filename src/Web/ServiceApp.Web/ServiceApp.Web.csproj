@@ -16,4 +16,8 @@
     <ProjectReference Include="..\..\Data\ServiceApp.Data\ServiceApp.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Offers\" />
+  </ItemGroup>
+
 </Project>

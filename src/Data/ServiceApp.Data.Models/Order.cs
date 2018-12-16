@@ -1,6 +1,7 @@
 ﻿namespace ServiceApp.Data.Models
 {
     using ServiceApp.Web.Areas.Identity.Data;
+    using System;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -10,6 +11,8 @@
         {
             this.Raws = new List<OrderRaw>();
         }
+
+        public DateTime DateOfCreation { get; set; }
 
         public ServiceAppUser Service { get; set; }
 
