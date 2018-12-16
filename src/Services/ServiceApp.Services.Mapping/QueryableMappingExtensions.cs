@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using AutoMapper.QueryableExtensions;
 
-namespace FunApp.Services.Mapping
+namespace ServiceApp.Services.Mapping
 {
     public static class QueryableMappingExtensions
     {

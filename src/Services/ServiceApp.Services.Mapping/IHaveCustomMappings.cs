@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 
-namespace FunApp.Services.Mapping
+namespace ServiceApp.Services.Mapping
 {
     public interface IHaveCustomMappings
     {

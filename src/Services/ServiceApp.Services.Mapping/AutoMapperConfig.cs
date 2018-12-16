@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using AutoMapper;
 
-namespace FunApp.Services.Mapping
+namespace ServiceApp.Services.Mapping
 {
     public static class AutoMapperConfig
     {

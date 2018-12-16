@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.6" PrivateAssets="All" />
@@ -14,10 +15,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\ServiceApp.Data.Models\ServiceApp.Data.Models.csproj" />
     <ProjectReference Include="..\..\Data\ServiceApp.Data\ServiceApp.Data.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Views\Offers\" />
+    <ProjectReference Include="..\..\Services\ServiceApp.Services.DataServices\ServiceApp.Services.DataServices.csproj" />
   </ItemGroup>
 
 </Project>

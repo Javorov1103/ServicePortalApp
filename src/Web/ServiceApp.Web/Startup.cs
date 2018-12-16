@@ -13,6 +13,13 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ServiceApp.Web.Models;
 using ServiceApp.Web.Areas.Identity.Data;
+using ServiceApp.Services.DataServices.Contracts;
+using ServiceApp.Services.DataServices;
+using ServiceApp.Data.Common;
+using ServiceApp.Data;
+using AutoMapper;
+using ServiceApp.Services.Mapping;
+using ServiceApp.Services.Models;
 
 namespace ServiceApp.Web
 {
@@ -28,6 +35,10 @@ namespace ServiceApp.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            AutoMapperConfig.RegisterMappings(
+               typeof(OffersShortViewModel).Assembly
+           );
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -53,6 +64,11 @@ namespace ServiceApp.Web
                 .AddEntityFrameworkStores<ServiceAppContext>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddAutoMapper();
+
+
+            services.AddScoped(typeof(IRepository<>), typeof(DbRepository<>));
+            services.AddScoped<IOfferService, OfferService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

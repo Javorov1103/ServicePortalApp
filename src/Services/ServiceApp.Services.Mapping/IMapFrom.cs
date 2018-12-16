@@ -1,4 +1,4 @@
-﻿namespace FunApp.Services.Mapping
+﻿namespace ServiceApp.Services.Mapping
 {
     public interface IMapFrom<T>
     {
