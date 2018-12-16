@@ -13,6 +13,7 @@ namespace ServiceApp.Web.Controllers
     public class HomeController : Controller
     {
         private SignInManager<ServiceAppUser> signInManager { get; set; }
+
         public HomeController(SignInManager<ServiceAppUser> signInManager)
         {
             this.signInManager = signInManager;
