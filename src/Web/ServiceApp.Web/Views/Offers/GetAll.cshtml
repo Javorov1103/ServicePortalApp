@@ -4,23 +4,31 @@
 
 @model IEnumerable<OffersShortViewModel>
 
-<table class="table table-striped">
-    <tr>
-        <th>№</th>
-        <th>Марка</th>
-        <th>Рег номер</th>
-        <th>Дата на създаване</th>
-        <th>Цена</th>
-    </tr>
-    @foreach (var item in Model)
-    {
-    <tr>
-        <td></td>
-        <td>@item.CarMake</td>
-        <td>@item.CarRegistrationNumber</td>
-        <td>@item.DateOfCreation</td>
-        <td>@item.TotalPrice</td>
-    </tr>
-    }
-</table>
+
+<div id="create-offer-btn">
+    <a asp-controller="Offers" asp-action="Create" class="btn btn-primary">+ Нова Оферта</a>
+</div>
+   
+
+<div class="container-fluid">
+    <table class="table table-striped">
+        <tr>
+            <th>№</th>
+            <th>Марка</th>
+            <th>Рег номер</th>
+            <th>Дата на създаване</th>
+            <th>Цена</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td></td>
+                <td>@item.CarMake</td>
+                <td>@item.CarRegistrationNumber</td>
+                <td>@item.DateOfCreation</td>
+                <td>@item.TotalPrice</td>
+            </tr>
+        }
+    </table>
+</div>
 

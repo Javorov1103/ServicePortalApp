@@ -35,3 +35,8 @@ body {
         display: none;
     }
 }
+
+#create-offer-btn{
+    margin-top:20px;
+    margin-bottom: 10px;
+}

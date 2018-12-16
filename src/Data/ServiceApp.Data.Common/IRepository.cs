@@ -12,6 +12,8 @@ namespace ServiceApp.Data.Common
     {
         IQueryable<TEntity> All();
 
+        bool Contains(TEntity entity);
+
         Task AddAsync(TEntity entity);
 
         void Delete(TEntity entity);

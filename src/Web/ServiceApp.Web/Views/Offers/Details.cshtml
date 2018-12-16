@@ -1,0 +1,47 @@
+﻿@using ServiceApp.Services.Models.Offers
+
+@model OfferDetailsViewModel
+
+<div class="jumbotron">
+    <div>
+        <span>@Model.CarMake</span>
+    </div>
+    <div>
+        <span>@Model.CarModel</span>
+    </div>
+    <div>
+        <span>@Model.CarRegistrationNumber</span>
+    </div>
+    <div>
+        <span>@Model.CarVinNumber</span>
+    </div>
+
+    <div class="container-fluid">
+        <table class="table table-striped">
+            <tr>
+                <th>№</th>
+                <th>Код на частта</th>
+                <th>Описание</th>
+                <th>Цена</th>
+                <th>Количество</th>
+                <th>Цена части</th>
+                <th>Цена за труд</th>
+                <th>Цена за реда</th>
+            </tr>
+            @foreach (var item in Model.Raws)
+            {
+            <tr>
+                <td></td>
+                <td>@item.PartCode</td>
+                <td>@item.PartDesciption</td>
+                <td>@item.PartPrice</td>
+                <td>@item.PartCount</td>
+                <td>@item.PriceOfParts</td>
+                <td>@item.PriceOfWork</td>
+                <td>@item.TotalPrice</td>
+            </tr>
+            }
+        </table>
+    </div>
+</div>
+    

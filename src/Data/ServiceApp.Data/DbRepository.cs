@@ -45,5 +45,10 @@ namespace ServiceApp.Data
         {
             this.context.Dispose();
         }
+
+        public bool Contains(TEntity entity)
+        {
+            return this.dbSet.Contains(entity);
+        }
     }
 }
