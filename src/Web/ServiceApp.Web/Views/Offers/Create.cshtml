@@ -28,10 +28,37 @@
         <input asp-for="CarVinNumber" class="form-control">
     </div>
 
-    <partial name="CreatePartial" model="@Model.Raws">
-
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary">Създаване</button>
+    <div class="form-group" id="item-list">
+        <a href="#" id="add">Add</a>
+        <br />
+        <input type="text" asp-for="Raws" class="items" name="Raws[0].PartCode" value=""/>
+        <input type="text" asp-for="Raws" class="items" name="Raws[0].PartDesciption" value=""/>
+        <input type="text" asp-for="Raws" class="items" name="Raws[0].PartPrice" value=""/>
+        <input type="text" asp-for="Raws" class="items" name="Raws[0].PartCount" value="" />
+        <input type="text" asp-for="Raws" class="items" name="Raws[0].PriceOfWork" value="" />
     </div>
 
+    <input type="submit" value="Create" class="btn btn-primary" />
+
 </form>
+
+@section Scripts {
+    <script>
+$(function () {
+
+   $("#add").click(function (e) {
+       e.preventDefault();
+       var i = ($(".items").length) / 5;
+       var n = '<br /><input type="text" asp-for="Raws" class="items" name="Raws[' + i + '].PartCode" />' +
+           '<input type="text" asp-for="Raws" class="items" name="Raws[' + i + '].PartDesciption" />' + 
+           '<input type="text" asp-for="Raws" class="items" name="Raws[' + i + '].PartPrice" />' +
+           '<input type="text" asp-for="Raws" class="items" name="Raws[' + i + '].PartCount" />' +
+           '<input type="text" asp-for="Raws" class="items" name="Raws[' + i + '].PriceOfWork" />'
+
+
+       $("#item-list").append(n);
+   });
+
+});
+    </script>
+}
