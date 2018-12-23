@@ -31,9 +31,10 @@ namespace ServiceApp.Services.DataServices
             this.partRepository = partRepository;
         }
 
-        public IEnumerable<OffersShortViewModel> All()
+        public IEnumerable<OffersShortViewModel> All(string id)
         {
-            var offers = this.offerRepository.All().To<OffersShortViewModel>().ToList();
+           
+            var offers = this.offerRepository.All().Where(x=>x.Service.Id == id).To<OffersShortViewModel>().ToList();
 
             return offers;
         }

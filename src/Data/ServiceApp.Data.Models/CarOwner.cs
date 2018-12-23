@@ -1,5 +1,6 @@
 ﻿namespace ServiceApp.Data.Models
 {
+    using ServiceApp.Web.Areas.Identity.Data;
     using System.Collections.Generic;
 
     public class CarOwner : BaseModel<int>
@@ -26,5 +27,7 @@
         public ICollection<Car> Cars { get; set; }
 
         public decimal Obligation { get; set; }
+
+        public ServiceAppUser Service { get; set; }
     }
 }

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ServiceApp.Services.DataServices.Contracts;
 using ServiceApp.Services.Models.Offers;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace ServiceApp.Web.Controllers
@@ -18,13 +19,13 @@ namespace ServiceApp.Web.Controllers
 
         public IActionResult GetAll()
         {
-            var offers = this.offerService.All();
+            var offers = this.offerService.All(this.User.FindFirstValue(ClaimTypes.NameIdentifier));
             return View(offers);
         }
 
         public IActionResult Create()
         {
-            var model = new OfferCreateViewModel();
+           var model = new OfferCreateViewModel();
             return this.View(model);
         }
 

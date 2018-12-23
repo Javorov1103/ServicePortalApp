@@ -9,7 +9,7 @@ namespace ServiceApp.Services.DataServices.Contracts
 {
     public interface IOfferService
     {
-        IEnumerable<OffersShortViewModel> All();
+        IEnumerable<OffersShortViewModel> All(string id);
 
         Task<int> Create(OfferCreateViewModel input);
 

@@ -1,0 +1,31 @@
+﻿@using ServiceApp.Services.Models.Cars
+
+@model IEnumerable<CarsShortViewModel>
+
+<div id="create-offer-btn">
+    <a asp-controller="Cars" asp-action="Create" class="btn btn-primary">+ Нов автомобил</a>
+</div>
+
+<div class="container-fluid">
+    <table class="table table-striped">
+        <tr>
+            <th>№</th>
+            <th>Марка</th>
+            <th>Модел</th>
+            <th>Рег номер</th>
+            <th>ВИН</th>
+            <th>Собственик</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>1</td>
+            <td>@item.Make</td>
+            <td>@item.Model</td>
+            <td>@item.RegistrationNumber</td>
+            <td>@item.VinNumber</td>
+            <td>@item.CarOwner</td>
+        </tr>
+        }
+    </table>
+</div>
