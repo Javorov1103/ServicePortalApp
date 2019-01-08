@@ -12,7 +12,7 @@ namespace ServiceApp.Data.Models
             this.Parts = new List<WarehousesPart>();
         }
 
-        public ServiceAppUser Service { get; set; }
+        public virtual ServiceAppUser Service { get; set; }
 
         public ICollection<WarehousesPart> Parts { get; set; }
     }

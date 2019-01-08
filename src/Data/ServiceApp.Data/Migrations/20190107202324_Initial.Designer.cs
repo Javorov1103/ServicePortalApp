@@ -10,8 +10,8 @@ using ServiceApp.Web.Models;
 namespace ServiceApp.Data.Migrations
 {
     [DbContext(typeof(ServiceAppContext))]
-    [Migration("20181216101751_DateOfCreationAddedOffersAndOrders")]
-    partial class DateOfCreationAddedOffersAndOrders
+    [Migration("20190107202324_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -137,11 +137,11 @@ namespace ServiceApp.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CarOwnerId");
+                    b.Property<string>("CarModel");
+
+                    b.Property<int?>("CarOwnerId");
 
                     b.Property<string>("Make");
-
-                    b.Property<string>("Model");
 
                     b.Property<string>("RegistrationNum");
 
@@ -525,13 +525,12 @@ namespace ServiceApp.Data.Migrations
                 {
                     b.HasOne("ServiceApp.Data.Models.CarOwner", "CarOwner")
                         .WithMany("Cars")
-                        .HasForeignKey("CarOwnerId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("CarOwnerId");
                 });
 
             modelBuilder.Entity("ServiceApp.Data.Models.CarOwner", b =>
                 {
-                    b.HasOne("ServiceApp.Web.Areas.Identity.Data.ServiceAppUser")
+                    b.HasOne("ServiceApp.Web.Areas.Identity.Data.ServiceAppUser", "ServiceAppUser")
                         .WithMany("Clinets")
                         .HasForeignKey("ServiceAppUserId");
                 });

@@ -10,8 +10,8 @@ using ServiceApp.Web.Models;
 namespace ServiceApp.Data.Migrations
 {
     [DbContext(typeof(ServiceAppContext))]
-    [Migration("20181209212200_Initial")]
-    partial class Initial
+    [Migration("20190107202751_Initial3")]
+    partial class Initial3
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -137,11 +137,11 @@ namespace ServiceApp.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CarOwnerId");
+                    b.Property<string>("CarModel");
+
+                    b.Property<int?>("CarOwnerId");
 
                     b.Property<string>("Make");
-
-                    b.Property<string>("Model");
 
                     b.Property<string>("RegistrationNum");
 
@@ -214,6 +214,8 @@ namespace ServiceApp.Data.Migrations
 
                     b.Property<int>("CarId");
 
+                    b.Property<DateTime>("DateOfCreation");
+
                     b.Property<string>("ServiceId");
 
                     b.HasKey("Id");
@@ -274,6 +276,8 @@ namespace ServiceApp.Data.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("CarId");
+
+                    b.Property<DateTime>("DateOfCreation");
 
                     b.Property<bool>("IsActive");
 
@@ -521,13 +525,12 @@ namespace ServiceApp.Data.Migrations
                 {
                     b.HasOne("ServiceApp.Data.Models.CarOwner", "CarOwner")
                         .WithMany("Cars")
-                        .HasForeignKey("CarOwnerId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("CarOwnerId");
                 });
 
             modelBuilder.Entity("ServiceApp.Data.Models.CarOwner", b =>
                 {
-                    b.HasOne("ServiceApp.Web.Areas.Identity.Data.ServiceAppUser")
+                    b.HasOne("ServiceApp.Web.Areas.Identity.Data.ServiceAppUser", "AutoService")
                         .WithMany("Clinets")
                         .HasForeignKey("ServiceAppUserId");
                 });
@@ -622,7 +625,7 @@ namespace ServiceApp.Data.Migrations
             modelBuilder.Entity("ServiceApp.Data.Models.Part", b =>
                 {
                     b.HasOne("ServiceApp.Data.Models.Supplier", "Supplier")
-                        .WithMany()
+                        .WithMany("Parts")
                         .HasForeignKey("SupplierId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

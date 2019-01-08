@@ -4,14 +4,12 @@
     {
         public string Make { get; set; }
 
-        public string Model { get; set; }
+        public string CarModel { get; set; }
 
         public string RegistrationNum { get; set; }
 
         public string VinNumber { get; set; }
 
-        public int CarOwnerId { get; set; }
-
-        public CarOwner CarOwner { get; set; }
+        public virtual CarOwner CarOwner { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,5 +20,9 @@ namespace ServiceApp.Data.Common
         void Delete(TEntity entity);
 
         Task<int> SaveChangesAsync();
+
+        IQueryable<TEntity> Query(Expression<Func<TEntity, bool>> filter);
+
+        IQueryable<TEntity> QueryObjectGraph(Expression<Func<TEntity, bool>> filter, string children);
     }
 }

@@ -18,8 +18,8 @@ using ServiceApp.Services.DataServices;
 using ServiceApp.Data.Common;
 using ServiceApp.Data;
 using AutoMapper;
-using ServiceApp.Services.Mapping;
 using ServiceApp.Services.Models;
+using ServiceApp.Services.Mapping;
 
 namespace ServiceApp.Web
 {
@@ -70,6 +70,7 @@ namespace ServiceApp.Web
             services.AddScoped(typeof(IRepository<>), typeof(DbRepository<>));
             services.AddScoped<IOfferService, OfferService>();
             services.AddScoped<ICarService, CarService>();
+            services.AddScoped<ICarOwnerService, CarOwnerService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

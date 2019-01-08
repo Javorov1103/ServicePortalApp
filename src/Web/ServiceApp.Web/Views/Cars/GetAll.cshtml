@@ -1,6 +1,6 @@
 ﻿@using ServiceApp.Services.Models.Cars
 
-@model IEnumerable<CarsShortViewModel>
+@model IEnumerable<CarShortViewModel>
 
 <div id="create-offer-btn">
     <a asp-controller="Cars" asp-action="Create" class="btn btn-primary">+ Нов автомобил</a>
@@ -21,10 +21,10 @@
         <tr>
             <td>1</td>
             <td>@item.Make</td>
-            <td>@item.Model</td>
-            <td>@item.RegistrationNumber</td>
+            <td>@item.CarModel</td>
+            <td>@item.RegistrationNum</td>
             <td>@item.VinNumber</td>
-            <td>@item.CarOwner</td>
+            <td>@item.CarOwnerName</td>
         </tr>
         }
     </table>

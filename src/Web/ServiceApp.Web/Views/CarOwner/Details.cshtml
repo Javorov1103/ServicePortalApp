@@ -1,0 +1,38 @@
+﻿@using ServiceApp.Data.Models
+
+@model CarOwner
+
+<div class="jumbotron">
+    <h4>@Model.Name</h4>
+    <h5>@Model.Bulstat</h5>
+    <h5>@Model.City</h5>
+    <h5>@Model.Address</h5>
+    <h5>@Model.MRP</h5>
+    <h5>@Model.Telephone</h5>
+    <h5>@Model.Email</h5>
+
+    <h3>Коли</h3>
+    <div class="container-fluid">
+        <table class="table table-striped">
+            <tr>
+                <th>Марка</th>
+                <th>Модел</th>
+                <th>Рег номер</th>
+                <th>Номер на рама</th>
+            </tr>
+            @foreach (var car in Model.Cars)
+            {
+                <tr>
+                    <td>@car.Make</td>
+                    <td>@car.CarModel</td>
+                    <td>@car.RegistrationNum</td>
+                    <td>@car.VinNumber</td>
+                    <td> <a asp-controller="Cars" asp-action="Details" asp-route-id="@car.Id">Детайли</a></td>
+                </tr>
+
+               
+            }
+        </table>
+    </div>
+</div>
+

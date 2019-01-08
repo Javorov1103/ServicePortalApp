@@ -13,6 +13,7 @@
             this.Orders = new HashSet<Order>();
             this.Clinets = new HashSet<CarOwner>();
             this.Obligations = new List<Obligation>();
+            this.Warehouse = new Warehouse();
         }
 
         public string Name { get; set; }

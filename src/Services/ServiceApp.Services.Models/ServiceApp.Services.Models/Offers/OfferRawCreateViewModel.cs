@@ -1,12 +1,11 @@
 ﻿using ServiceApp.Data.Models;
-using ServiceApp.Services.Mapping;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace ServiceApp.Services.Models.Offers
 {
-    public class OfferRawCreateViewModel : IMapTo<OfferRaw>
+    public class OfferRawCreateViewModel 
     {
         public string PartCode { get; set; }
 

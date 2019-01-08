@@ -135,11 +135,11 @@ namespace ServiceApp.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CarOwnerId");
+                    b.Property<string>("CarModel");
+
+                    b.Property<int?>("CarOwnerId");
 
                     b.Property<string>("Make");
-
-                    b.Property<string>("Model");
 
                     b.Property<string>("RegistrationNum");
 
@@ -172,13 +172,13 @@ namespace ServiceApp.Data.Migrations
 
                     b.Property<decimal>("Obligation");
 
-                    b.Property<string>("ServiceId");
+                    b.Property<string>("ServiceAppUserId");
 
                     b.Property<string>("Telephone");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ServiceId");
+                    b.HasIndex("ServiceAppUserId");
 
                     b.ToTable("CarOwners");
                 });
@@ -523,15 +523,14 @@ namespace ServiceApp.Data.Migrations
                 {
                     b.HasOne("ServiceApp.Data.Models.CarOwner", "CarOwner")
                         .WithMany("Cars")
-                        .HasForeignKey("CarOwnerId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("CarOwnerId");
                 });
 
             modelBuilder.Entity("ServiceApp.Data.Models.CarOwner", b =>
                 {
-                    b.HasOne("ServiceApp.Web.Areas.Identity.Data.ServiceAppUser", "Service")
+                    b.HasOne("ServiceApp.Web.Areas.Identity.Data.ServiceAppUser", "AutoService")
                         .WithMany("Clinets")
-                        .HasForeignKey("ServiceId");
+                        .HasForeignKey("ServiceAppUserId");
                 });
 
             modelBuilder.Entity("ServiceApp.Data.Models.Obligation", b =>

@@ -2,7 +2,7 @@
 
 namespace ServiceApp.Data.Migrations
 {
-    public partial class New : Migration
+    public partial class Initial4 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

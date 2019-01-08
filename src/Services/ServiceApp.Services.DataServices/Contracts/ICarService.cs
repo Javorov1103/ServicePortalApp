@@ -8,7 +8,7 @@ namespace ServiceApp.Services.DataServices.Contracts
 {
     public interface ICarService
     {
-        IEnumerable<CarsShortViewModel> All(string name);
+        IEnumerable<CarShortViewModel> All(string name);
 
         Task<int> Create(CarCreateViewModel input);
 

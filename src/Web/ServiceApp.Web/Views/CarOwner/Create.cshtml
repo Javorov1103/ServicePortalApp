@@ -1,0 +1,39 @@
+﻿@using ServiceApp.Services.Models.CarOwner
+
+@model CarOwnerCreateViewModel
+
+<form asp-controller="CarOwner" asp-action="Create" method="post">
+    <h4>Данни за клиента</h4>
+    <div class="form-group">
+        <label asp-for="Name" class="control-label">Име</label>
+        <input asp-for="Name" class="form-control" rows="6" cols="50">
+    </div>
+    <div class="form-group">
+        <label asp-for="Bulstat" class="control-label">Булстат</label>
+        <input asp-for="Bulstat" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Address" class="control-label">Адрес</label>
+        <input asp-for="Address" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label asp-for="City" class="control-label">Град</label>
+        <input asp-for="City" class="form-control">
+    </div>
+    <div class="form-group">
+        <label asp-for="MRP" class="control-label">МОЛ</label>
+        <input asp-for="MRP" class="form-control">
+    </div>
+    <div class="form-group">
+        <label asp-for="Email" class="control-label">Email</label>
+        <input asp-for="Email" class="form-control">
+    </div>
+    <div class="form-group">
+        <label asp-for="Telephone" class="control-label">Телефон</label>
+        <input asp-for="Telephone" class="form-control">
+    </div>
+
+    <input type="submit" value="Create" class="btn btn-primary" />
+</form>

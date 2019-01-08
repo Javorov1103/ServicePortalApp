@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Data\ServiceApp.Data.Models\ServiceApp.Data.Models.csproj" />
-    <ProjectReference Include="..\..\ServiceApp.Services.Mapping\ServiceApp.Services.Mapping.csproj" />
   </ItemGroup>
 
 </Project>

@@ -8,4 +8,9 @@
     <PackageReference Include="AutoMapper" Version="8.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\ServiceApp.Data.Models\ServiceApp.Data.Models.csproj" />
+    <ProjectReference Include="..\ServiceApp.Services.Models\ServiceApp.Services.Models\ServiceApp.Services.Models.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -304,10 +304,10 @@ namespace ServiceApp.Data.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Make = table.Column<string>(nullable: true),
-                    Model = table.Column<string>(nullable: true),
+                    CarModel = table.Column<string>(nullable: true),
                     RegistrationNum = table.Column<string>(nullable: true),
                     VinNumber = table.Column<string>(nullable: true),
-                    CarOwnerId = table.Column<int>(nullable: false)
+                    CarOwnerId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -317,7 +317,7 @@ namespace ServiceApp.Data.Migrations
                         column: x => x.CarOwnerId,
                         principalTable: "CarOwners",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -326,6 +326,7 @@ namespace ServiceApp.Data.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    DateOfCreation = table.Column<DateTime>(nullable: false),
                     ServiceId = table.Column<string>(nullable: true),
                     CarId = table.Column<int>(nullable: false)
                 },
@@ -352,6 +353,7 @@ namespace ServiceApp.Data.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    DateOfCreation = table.Column<DateTime>(nullable: false),
                     ServiceId = table.Column<string>(nullable: true),
                     CarId = table.Column<int>(nullable: false),
                     IsActive = table.Column<bool>(nullable: false)

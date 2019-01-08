@@ -1,5 +1,4 @@
 ﻿using ServiceApp.Data.Models;
-using ServiceApp.Services.Mapping;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +6,7 @@ using System.Text;
 
 namespace ServiceApp.Services.Models.Offers
 {
-    public class OfferDetailsViewModel : IMapFrom<Offer>
+    public class OfferDetailsViewModel 
     {
         public OfferDetailsViewModel()
         {

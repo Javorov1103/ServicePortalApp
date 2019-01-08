@@ -1,0 +1,38 @@
+﻿@using ServiceApp.Services.Models.Cars
+
+@model CarCreateViewModel
+
+@{ 
+    var carOwners= this.ViewData["CarOwners"] as IEnumerable<SelectListItem>;
+}
+
+<form asp-action="Create">
+    <h4>Данни за автомобила</h4>
+    <div class="form-group">
+        <label asp-for="@Model.Make" class="control-label">Марка</label>
+        <input asp-for="@Model.Make" class="form-control">
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.CarModel" class="control-label">Модел</label>
+        <input asp-for="@Model.CarModel" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label asp-for="@Model.RegistrationNum" class="control-label">Регистрационен номер</label>
+        <input asp-for="@Model.RegistrationNum" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label asp-for="@Model.VinNumber" class="control-label">ВИН номер</label>
+        <input asp-for="@Model.VinNumber" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CarOwnerId" class="control-label">Собственик</label>
+
+        <select asp-for="CarOwnerId" asp-items="carOwners" class="form-control"></select>
+        <span asp-validation-for="CarOwnerId" class="text-danger"></span>
+    </div>
+
+    <input type="submit" value="Create" class="btn btn-primary" />
+</form>

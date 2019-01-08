@@ -1,12 +1,12 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using ServiceApp.Services.DataServices.Contracts;
-using ServiceApp.Services.Models.Offers;
-using System.Security.Claims;
-using System.Threading.Tasks;
-
-namespace ServiceApp.Web.Controllers
+﻿namespace ServiceApp.Web.Controllers
 {
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Mvc;
+    using ServiceApp.Services.DataServices.Contracts;
+    using ServiceApp.Services.Models.Offers;
+    using System.Security.Claims;
+    using System.Threading.Tasks;
+
     [Authorize]
     public class OffersController : Controller
     {

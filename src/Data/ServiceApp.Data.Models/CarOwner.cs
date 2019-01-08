@@ -24,10 +24,12 @@
 
         public string Telephone { get; set; }
 
-        public ICollection<Car> Cars { get; set; }
+        public virtual ICollection<Car> Cars { get; set; }
 
         public decimal Obligation { get; set; }
 
-        public ServiceAppUser Service { get; set; }
+        public string ServiceAppUserId { get; set; }
+
+        public virtual ServiceAppUser AutoService { get; set; }
     }
 }

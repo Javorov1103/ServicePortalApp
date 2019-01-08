@@ -4,6 +4,7 @@ using ServiceApp.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -49,6 +50,17 @@ namespace ServiceApp.Data
         public bool Contains(TEntity entity)
         {
             return this.dbSet.Contains(entity);
+        }
+
+        public IQueryable<TEntity> Query(Expression<Func<TEntity, bool>> filter)
+        {
+            return dbSet.Where(filter);
+        }
+
+        public IQueryable<TEntity> QueryObjectGraph(Expression<Func<TEntity, bool>> filter,string children)
+        {
+
+            return dbSet.Include(children).Where(filter);
         }
     }
 }

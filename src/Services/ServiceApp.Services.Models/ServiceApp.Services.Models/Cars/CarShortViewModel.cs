@@ -1,6 +1,9 @@
-﻿namespace ServiceApp.Services.Models.Cars
+﻿
+using ServiceApp.Data.Models;
+
+namespace ServiceApp.Services.Models.Cars
 {
-    public class CarCreateViewModel
+    public class CarShortViewModel 
     {
         public string Make { get; set; }
 
@@ -10,6 +13,6 @@
 
         public string VinNumber { get; set; }
 
-        public int CarOwnerId { get; set; }
+        public string CarOwnerName { get; set; }
     }
 }
