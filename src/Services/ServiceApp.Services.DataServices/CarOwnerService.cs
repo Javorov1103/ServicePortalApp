@@ -49,10 +49,10 @@
             return carOwner;
         }
 
-        public IEnumerable<CarOwnerViewModel> GetAll()
+        public IEnumerable<CarOwnerViewModel> GetAll(string id)
         {
             
-            var all = this.carOwnerRepository.All().ToList().Select(co => mapper.Map<CarOwnerViewModel>(co));
+            var all = this.carOwnerRepository.All().ToList().Where(x=>x.ServiceAppUserId ==id).Select(co => mapper.Map<CarOwnerViewModel>(co));
 
             return all;
         }

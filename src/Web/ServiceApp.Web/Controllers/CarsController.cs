@@ -30,7 +30,7 @@
 
         public IActionResult Create()
         {
-            this.ViewData["CarOwners"] = this.carOwnerService.GetAll()
+            this.ViewData["CarOwners"] = this.carOwnerService.GetAll(this.User.FindFirstValue(ClaimTypes.NameIdentifier))
                 .Select(x => new SelectListItem
                 {
                     Value = x.Id.ToString(),

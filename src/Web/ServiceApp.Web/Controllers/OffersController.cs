@@ -2,8 +2,10 @@
 {
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.Rendering;
     using ServiceApp.Services.DataServices.Contracts;
     using ServiceApp.Services.Models.Offers;
+    using System.Linq;
     using System.Security.Claims;
     using System.Threading.Tasks;
 
@@ -11,22 +13,32 @@
     public class OffersController : Controller
     {
         public IOfferService offerService { get; set; }
+        public ICarService carService { get; set; }
 
-        public OffersController(IOfferService offerService)
+        public OffersController(IOfferService offerService, ICarService carService)
         {
             this.offerService = offerService;
+            this.carService = carService;
         }
 
         public IActionResult GetAll()
         {
-            var offers = this.offerService.All(this.User.FindFirstValue(ClaimTypes.NameIdentifier));
+            var offers = this.offerService.GetAll(this.User.FindFirstValue(ClaimTypes.NameIdentifier));
             return View(offers);
         }
 
         public IActionResult Create()
         {
-           var model = new OfferCreateViewModel();
-            return this.View(model);
+            this.ViewData["carsRegisterNums"] = this.carService.All(this.User.FindFirstValue(ClaimTypes.NameIdentifier))
+                .Select(
+                x=>new SelectListItem
+                {
+                    Value = x.RegistrationNum,
+                     Text= x.RegistrationNum
+                }
+                );
+
+            return this.View();
         }
 
         [HttpPost]

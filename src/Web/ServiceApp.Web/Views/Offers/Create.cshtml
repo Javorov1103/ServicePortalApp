@@ -2,63 +2,53 @@
 
 @model OfferCreateViewModel
 
-
+@{
+    var carsRegisterNums = this.ViewData["carsRegisterNums"] as IEnumerable<SelectListItem>;
+}
+@*Fix the view with select list items for the parts*@
 <form asp-controller="Offers" asp-action="Create" method="post">
-    <h4>Данни за автомобила</h4>
-    <div class="form-group">
-        <label asp-for="CarMake" class="control-label">Марка</label>
-        <input asp-for="CarMake" class="form-control" rows="6" cols="50">
-    </div>
-    <div class="form-group">
-        <label asp-for="CarModel" class="control-label">Модел</label>
-        <input asp-for="CarModel" class="form-control">
-    </div>
-
-    <div class="form-group">
-        <label asp-for="CarOwner" class="control-label">Собственик</label>
-        <input asp-for="CarOwner" class="form-control">
-    </div>
+    <h4>Избери автомобил</h4>
+    @*Избор по регистрационен номер*@
 
     <div class="form-group">
         <label asp-for="CarRegistrationNumber" class="control-label">Регистрационен номер</label>
-        <input asp-for="CarRegistrationNumber" class="form-control">
-    </div>
-    <div class="form-group">
-        <label asp-for="CarVinNumber" class="control-label">Номер на рама</label>
-        <input asp-for="CarVinNumber" class="form-control">
+
+        <select asp-for="CarRegistrationNumber" asp-items="carsRegisterNums" class="form-control"></select>
+        <span asp-validation-for="CarRegistrationNumber" class="text-danger"></span>
     </div>
 
+    <a href="#" id="add" class="btn btn-default">Добави ред</a>
     <div class="form-group" id="item-list">
-        <a href="#" id="add">Add</a>
+
         <br />
-        <input type="text" asp-for="Raws" class="items" name="Raws[0].PartCode" value=""/>
-        <input type="text" asp-for="Raws" class="items" name="Raws[0].PartDesciption" value=""/>
-        <input type="text" asp-for="Raws" class="items" name="Raws[0].PartPrice" value=""/>
+        <input type="text" asp-for="Raws" class="items" name="Raws[0].PartCode" value="" />
+        <input type="text" asp-for="Raws" class="items" name="Raws[0].PartDesciption" value="" />
+        <input type="text" asp-for="Raws" class="items" name="Raws[0].PartPrice" value="" />
         <input type="text" asp-for="Raws" class="items" name="Raws[0].PartCount" value="" />
         <input type="text" asp-for="Raws" class="items" name="Raws[0].PriceOfWork" value="" />
     </div>
 
-    <input type="submit" value="Create" class="btn btn-primary" />
+    <input type="submit" value="Създай" class="btn btn-primary" />
 
 </form>
 
 @section Scripts {
     <script>
-$(function () {
+        $(function () {
 
-   $("#add").click(function (e) {
-       e.preventDefault();
-       var i = ($(".items").length) / 5;
-       var n = '<br /><input type="text" asp-for="Raws" class="items" name="Raws[' + i + '].PartCode" />' +
-           '<input type="text" asp-for="Raws" class="items" name="Raws[' + i + '].PartDesciption" />' + 
-           '<input type="text" asp-for="Raws" class="items" name="Raws[' + i + '].PartPrice" />' +
-           '<input type="text" asp-for="Raws" class="items" name="Raws[' + i + '].PartCount" />' +
-           '<input type="text" asp-for="Raws" class="items" name="Raws[' + i + '].PriceOfWork" />'
+            $("#add").click(function (e) {
+                e.preventDefault();
+                var i = ($(".items").length) / 5;
+                var n = '<br /><input type="text" asp-for="Raws" class="items" name="Raws[' + i + '].PartCode" />' +
+                    '<input type="text" asp-for="Raws" class="items" name="Raws[' + i + '].PartDesciption" />' +
+                    '<input type="text" asp-for="Raws" class="items" name="Raws[' + i + '].PartPrice" />' +
+                    '<input type="text" asp-for="Raws" class="items" name="Raws[' + i + '].PartCount" />' +
+                    '<input type="text" asp-for="Raws" class="items" name="Raws[' + i + '].PriceOfWork" />'
 
 
-       $("#item-list").append(n);
-   });
+                $("#item-list").append(n);
+            });
 
-});
+        });
     </script>
 }

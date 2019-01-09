@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
-using ServiceApp.Data.Models;
-using ServiceApp.Web.Areas.Identity.Data;
-
-namespace ServiceApp.Web.Models
+﻿namespace ServiceApp.Web.Models
 {
+    using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore;
+    using ServiceApp.Data.Models;
+    using ServiceApp.Web.Areas.Identity.Data;
+
     public class ServiceAppContext : IdentityDbContext<ServiceAppUser>
     {
         public DbSet<Car> Cars { get; set; }

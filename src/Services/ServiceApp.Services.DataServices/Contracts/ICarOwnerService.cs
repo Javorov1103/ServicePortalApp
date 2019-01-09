@@ -12,6 +12,6 @@
 
         CarOwner GetById(int id);
 
-        IEnumerable<CarOwnerViewModel> GetAll();
+        IEnumerable<CarOwnerViewModel> GetAll(string id);
     }
 }

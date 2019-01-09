@@ -9,9 +9,8 @@
             this.Orders = new List<OrdersPart>();
             this.Offers = new List<OffersPart>();
             this.Warehouses = new List<WarehousesPart>();
+            this.DeliveryRaws = new List<DeliveryRaw>();
         }
-
-        public string Code { get; set; }
 
         public string Description { get; set; }
 
@@ -19,11 +18,7 @@
 
         public decimal DeliveryPrice { get; set; }
 
-        public int SupplierId { get; set; }
-
-        public Supplier Supplier { get; set; }
-
-
+        public ICollection<DeliveryRaw> DeliveryRaws { get; set; }
 
         public ICollection<OrdersPart> Orders { get; set; }
 

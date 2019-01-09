@@ -8,4 +8,8 @@
     <ProjectReference Include="..\..\..\Data\ServiceApp.Data.Models\ServiceApp.Data.Models.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Parts\" />
+  </ItemGroup>
+
 </Project>

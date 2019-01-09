@@ -6,6 +6,7 @@
     using ServiceApp.Services.DataServices.Contracts;
     using ServiceApp.Services.Models.CarOwner;
     using ServiceApp.Web.Areas.Identity.Data;
+    using System.Security.Claims;
     using System.Threading.Tasks;
 
     [Authorize]
@@ -45,7 +46,7 @@
 
         public IActionResult GetAll()
         {
-            var carOwners = this.carOwnerService.GetAll();
+            var carOwners = this.carOwnerService.GetAll(this.User.FindFirstValue(ClaimTypes.NameIdentifier));
 
             return this.View(carOwners);
         }

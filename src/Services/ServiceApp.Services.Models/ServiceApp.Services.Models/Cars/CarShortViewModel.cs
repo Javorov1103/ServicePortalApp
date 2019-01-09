@@ -5,6 +5,8 @@ namespace ServiceApp.Services.Models.Cars
 {
     public class CarShortViewModel 
     {
+        public string Id { get; set; }
+
         public string Make { get; set; }
 
         public string CarModel { get; set; }

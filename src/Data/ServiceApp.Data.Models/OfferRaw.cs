@@ -3,10 +3,10 @@
     public class OfferRaw : BaseModel<int>
     {
         public int OfferId { get; set; }
-        public Offer Offer { get; set; }
+        public virtual Offer Offer { get; set; }
 
         public int PartId { get; set; }
-        public Part Part { get; set; }
+        public virtual Part Part { get; set; }
 
         public int Count{ get; set; }
 

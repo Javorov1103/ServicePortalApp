@@ -25,7 +25,9 @@
 
         public IEnumerable<CarShortViewModel> All(string id)
         {
-            var cars = this.carReposotiry.All().Where(c=>c.CarOwner.AutoService.Id == id).Select(x=>mapper.Map<CarShortViewModel>(x)).ToList();
+
+            var cars = this.carReposotiry.QueryObjectGraph(c => c.CarOwner.AutoService.Id == id, "CarOwner").ToList().Select(x => mapper.Map<CarShortViewModel>(x));
+            //var cars = this.carReposotiry.All().Where(c=>c.CarOwner.AutoService.Id == id).Select(x=>mapper.Map<CarShortViewModel>(x)).ToList();
 
             return cars;
         }

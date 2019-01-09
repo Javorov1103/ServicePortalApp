@@ -1,15 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
-using ServiceApp.Data.Common;
-using ServiceApp.Web.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ServiceApp.Data
+﻿namespace ServiceApp.Data
 {
+    using Microsoft.EntityFrameworkCore;
+    using ServiceApp.Data.Common;
+    using ServiceApp.Web.Models;
+    using System;
+    using System.Linq;
+    using System.Linq.Expressions;
+    using System.Threading.Tasks;
+
     public class DbRepository<TEntity> : IRepository<TEntity>, IDisposable
         where TEntity : class
     {

@@ -1,9 +1,4 @@
-﻿using ServiceApp.Data.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ServiceApp.Services.Models.Offers
+﻿namespace ServiceApp.Services.Models.Offers
 {
     public class OfferRawCreateViewModel 
     {
@@ -13,7 +8,7 @@ namespace ServiceApp.Services.Models.Offers
 
         public decimal PartPrice { get; set; }
 
-        public int PartCount { get; set; }
+        public int Count { get; set; }
         
         public decimal PriceOfWork { get; set; }
 
