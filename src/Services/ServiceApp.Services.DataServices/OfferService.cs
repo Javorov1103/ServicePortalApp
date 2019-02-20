@@ -1,17 +1,16 @@
-﻿
-using ServiceApp.Data.Common;
-using ServiceApp.Data.Models;
-using ServiceApp.Services.DataServices.Contracts;
-using ServiceApp.Services.Models;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ServiceApp.Services.Models.Offers;
-using AutoMapper;
-using System;
-
-namespace ServiceApp.Services.DataServices
+﻿namespace ServiceApp.Services.DataServices
 {
+    using ServiceApp.Data.Common;
+    using ServiceApp.Data.Models;
+    using ServiceApp.Services.DataServices.Contracts;
+    using ServiceApp.Services.Models;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using ServiceApp.Services.Models.Offers;
+    using AutoMapper;
+    using System;
+
     public class OfferService : BaseService, IOfferService
     {
         private IRepository<Offer> offerRepository { get; set; }
@@ -43,7 +42,6 @@ namespace ServiceApp.Services.DataServices
             {
                 Car = car,
                 DateOfCreation = DateTime.UtcNow,
-                
             };
 
 

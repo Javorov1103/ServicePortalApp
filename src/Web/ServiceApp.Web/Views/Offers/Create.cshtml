@@ -5,6 +5,7 @@
 @{
     var carsRegisterNums = this.ViewData["carsRegisterNums"] as IEnumerable<SelectListItem>;
 }
+
 @*Fix the view with select list items for the parts*@
 <form asp-controller="Offers" asp-action="Create" method="post">
     <h4>Избери автомобил</h4>
@@ -13,7 +14,15 @@
     <div class="form-group">
         <label asp-for="CarRegistrationNumber" class="control-label">Регистрационен номер</label>
 
-        <select asp-for="CarRegistrationNumber" asp-items="carsRegisterNums" class="form-control"></select>
+        <div >
+            <input type="text" list="carsRegisterNums" />
+            <datalist id="carsRegisterNums">
+                @foreach (var regNum in carsRegisterNums)
+                {
+                    <option>@regNum.Text</option>
+                }
+            </datalist>
+        </div>
         <span asp-validation-for="CarRegistrationNumber" class="text-danger"></span>
     </div>
 
@@ -21,10 +30,9 @@
     <div class="form-group" id="item-list">
 
         <br />
-        <input type="text" asp-for="Raws" class="items" name="Raws[0].PartCode" value="" />
         <input type="text" asp-for="Raws" class="items" name="Raws[0].PartDesciption" value="" />
         <input type="text" asp-for="Raws" class="items" name="Raws[0].PartPrice" value="" />
-        <input type="text" asp-for="Raws" class="items" name="Raws[0].PartCount" value="" />
+        <input type="text" asp-for="Raws" class="items" name="Raws[0].Count" value="" />
         <input type="text" asp-for="Raws" class="items" name="Raws[0].PriceOfWork" value="" />
     </div>
 
@@ -38,17 +46,24 @@
 
             $("#add").click(function (e) {
                 e.preventDefault();
-                var i = ($(".items").length) / 5;
-                var n = '<br /><input type="text" asp-for="Raws" class="items" name="Raws[' + i + '].PartCode" />' +
-                    '<input type="text" asp-for="Raws" class="items" name="Raws[' + i + '].PartDesciption" />' +
-                    '<input type="text" asp-for="Raws" class="items" name="Raws[' + i + '].PartPrice" />' +
-                    '<input type="text" asp-for="Raws" class="items" name="Raws[' + i + '].PartCount" />' +
-                    '<input type="text" asp-for="Raws" class="items" name="Raws[' + i + '].PriceOfWork" />'
+                var i = ($(".items").length) / 4;
+                var n = '<br />' +
+                    '<input type="text" asp-for="Raws" style="margin: 5px 5px 5px 0;" name="Raws[' + i + '].PartDesciption" />' +
+                    '<input type="text" asp-for="Raws" style="margin: 5px 5px 5px 0;" name="Raws[' + i + '].PartPrice" />' +
+                    '<input type="text" asp-for="Raws" style="margin: 5px 5px 5px 0;" name="Raws[' + i + '].Count" />' +
+                    '<input type="text" asp-for="Raws" style="margin: 5px 5px 5px 0;" name="Raws[' + i + '].PriceOfWork" />'
 
 
                 $("#item-list").append(n);
             });
 
+        });
+
+        $(document).ready(function () {
+            $('#registerNumber').on('change', function () {
+                var optionText = $('#registerNumber option:selected').text();
+                alert("Selected Option Text: " + optionText);
+            })
         });
     </script>
 }

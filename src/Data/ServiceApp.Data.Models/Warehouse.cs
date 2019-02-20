@@ -9,11 +9,11 @@ namespace ServiceApp.Data.Models
     {
         public Warehouse()
         {
-            this.Parts = new List<WarehousesPart>();
+            this.Parts = new List<Part>();
         }
 
         public virtual ServiceAppUser Service { get; set; }
 
-        public ICollection<WarehousesPart> Parts { get; set; }
+        public ICollection<Part> Parts { get; set; }
     }
 }

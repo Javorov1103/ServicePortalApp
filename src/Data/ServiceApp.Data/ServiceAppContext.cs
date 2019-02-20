@@ -12,11 +12,9 @@
         public DbSet<Offer> Offers { get; set; }
         public DbSet<OffersPart> OffersParts { get; set; }
         public DbSet<Order> Orders { get; set; }
-        public DbSet<OrdersPart> OrdersParts { get; set; }
         public DbSet<Part> Parts { get; set; }
         public DbSet<Supplier> Suppliers { get; set; }
         public DbSet<Warehouse> Warehouses { get; set; }
-        public DbSet<WarehousesPart> WarehousesPart { get; set; }
         public DbSet<OfferRaw> OfferRaws { get; set; }
         public DbSet<OrderRaw> OrderRaws { get; set; }
         public DbSet<Obligation> Obligations { get; set; }
