@@ -23,7 +23,7 @@ namespace ServiceApp.Services.Mapping
                 .ForMember(dest=>dest.CarOwnerName,opt=>opt.MapFrom(src=>src.CarOwner.Name))
                 .ForMember(dest=>dest.CarOwnerEmail, opt=>opt.MapFrom(src=>src.CarOwner.Email));
             
-            CreateMap<OfferRawCreateViewModel, OfferRaw>();
+            
         }
     }
 }

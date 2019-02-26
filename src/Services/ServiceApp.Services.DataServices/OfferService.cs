@@ -27,7 +27,19 @@
 
         public IEnumerable<OffersShortViewModel> GetAll(string id)
         {
-            var offers = this.offerRepository.All().ToList().Where(x => x.Service.Id == id).Select(o => mapper.Map<OffersShortViewModel>(o));
+            var offers = new List<OffersShortViewModel>();
+
+            var offersFromDB = this.offerRepository.All().Where(x => x.Service.Id == id);
+            //.Select(o => mapper.Map<OffersShortViewModel>(o)).ToList();
+
+            if (!offersFromDB.Any())
+            {
+                return offers;
+            }
+            else
+            {
+                offers = offersFromDB.Select(o => mapper.Map<OffersShortViewModel>(o)).ToList();
+            }
 
             return offers;
         }
@@ -35,18 +47,23 @@
         public async Task<int> Create(OfferCreateViewModel input)
         {
             var car = carsRepository.All().FirstOrDefault(x => x.RegistrationNum == input.CarRegistrationNumber);
-
-
-            //OfferRaws to be splitted to part, count and price
+            
             var offer = new Offer()
             {
                 Car = car,
                 DateOfCreation = DateTime.UtcNow,
             };
 
+            foreach(var raw in input.Raws)
+            {
+                
+            }
 
-
-            return 0;
+            await this.offerRepository.AddAsync(offer);
+            await this.offerRepository.SaveChangesAsync();
+            
+            //Debug
+            return offer.Id;
         }
 
         public OfferDetailsViewModel GetById(int id)

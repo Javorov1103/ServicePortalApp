@@ -23,7 +23,7 @@
 
         public IActionResult GetAll()
         {
-            var cars = this.carService.All(this.User.FindFirstValue(ClaimTypes.NameIdentifier));
+            var cars = this.carService.GetAll(this.User.FindFirstValue(ClaimTypes.NameIdentifier));
 
             return View(cars);
         }

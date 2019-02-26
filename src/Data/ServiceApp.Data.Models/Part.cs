@@ -19,6 +19,8 @@
 
         public Warehouse Warehouse { get; set; }
 
+        public Nomenclature Nomenclature { get; set; }
+
         public Delivery Delivery { get; set; }
 
         public ICollection<OffersPart> Offers { get; set; }

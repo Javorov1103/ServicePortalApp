@@ -4,6 +4,7 @@
 
 @{
     var carsRegisterNums = this.ViewData["carsRegisterNums"] as IEnumerable<SelectListItem>;
+    var parts = this.ViewBag.parts;
 }
 
 @*Fix the view with select list items for the parts*@
@@ -15,7 +16,7 @@
         <label asp-for="CarRegistrationNumber" class="control-label">Регистрационен номер</label>
 
         <div >
-            <input type="text" list="carsRegisterNums" />
+            <input asp-for="CarRegistrationNumber" type="text" list="carsRegisterNums" />
             <datalist id="carsRegisterNums">
                 @foreach (var regNum in carsRegisterNums)
                 {
@@ -26,12 +27,18 @@
         <span asp-validation-for="CarRegistrationNumber" class="text-danger"></span>
     </div>
 
+
     <a href="#" id="add" class="btn btn-default">Добави ред</a>
     <div class="form-group" id="item-list">
-
         <br />
-        <input type="text" asp-for="Raws" class="items" name="Raws[0].PartDesciption" value="" />
-        <input type="text" asp-for="Raws" class="items" name="Raws[0].PartPrice" value="" />
+        <input asp-for="Raws" name="Raws[0].Part" type="text" list="parts" />
+        <datalist id="parts">
+            @foreach (var part in parts)
+            {
+                <option value="@part"></option>
+            }
+        </datalist>
+        @*<input type="text" asp-for="Raws" class="items" name="Raws[0].Part.PartPrice" value="" />*@
         <input type="text" asp-for="Raws" class="items" name="Raws[0].Count" value="" />
         <input type="text" asp-for="Raws" class="items" name="Raws[0].PriceOfWork" value="" />
     </div>

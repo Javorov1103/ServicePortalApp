@@ -12,13 +12,18 @@
     [Authorize]
     public class OffersController : Controller
     {
-        public IOfferService offerService { get; set; }
-        public ICarService carService { get; set; }
+        private IOfferService offerService;
+        private ICarService carService;
+        private IPartService partService;
+        private readonly IUserService userService;
 
-        public OffersController(IOfferService offerService, ICarService carService)
+        public OffersController(IOfferService offerService, ICarService carService, IPartService partService,
+            IUserService userService)
         {
             this.offerService = offerService;
             this.carService = carService;
+            this.partService = partService;
+            this.userService = userService;
         }
 
         public IActionResult GetAll()
@@ -29,14 +34,17 @@
 
         public IActionResult Create()
         {
-            this.ViewData["carsRegisterNums"] = this.carService.All(this.User.FindFirstValue(ClaimTypes.NameIdentifier))
+            this.ViewData["carsRegisterNums"] = this.carService.GetAll(this.User.FindFirstValue(ClaimTypes.NameIdentifier))
                 .Select(
                 x=>new SelectListItem
                 {
                     Value = x.RegistrationNum,
-                     Text= x.RegistrationNum
+                    Text= x.RegistrationNum
                 }
                 );
+
+            var parts = this.partService.GetAllFromWarehouse(this.userService.GetById(this.User.FindFirstValue(ClaimTypes.NameIdentifier)).WarehouseId).Select(o=>o.Description);
+            ViewBag.parts = parts;
 
             return this.View();
         }
@@ -51,7 +59,7 @@
 
             var id = await offerService.Create(input);
 
-            return RedirectToAction("Ditails", new { id = id });
+            return RedirectToAction("Details", new { id = id });
         }
         
 

@@ -14,6 +14,7 @@
             this.Clinets = new HashSet<CarOwner>();
             this.Obligations = new List<Obligation>();
             this.Warehouse = new Warehouse();
+            this.Nomenclature = new Nomenclature();
         }
 
         public string Name { get; set; }
@@ -31,6 +32,10 @@
         public int WarehouseId { get; set; }
 
         public virtual Warehouse Warehouse { get; set; }
+
+        public int NomenclatureId { get; set; }
+
+        public virtual Nomenclature Nomenclature { get; set; }
 
         public ICollection<Offer> Offers { get; set; }
 

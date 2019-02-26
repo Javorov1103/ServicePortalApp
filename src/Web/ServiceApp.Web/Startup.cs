@@ -71,6 +71,8 @@ namespace ServiceApp.Web
             services.AddScoped<IOfferService, OfferService>();
             services.AddScoped<ICarService, CarService>();
             services.AddScoped<ICarOwnerService, CarOwnerService>();
+            services.AddScoped<IPartService, PartService>();
+            services.AddScoped<IUserService, UserService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

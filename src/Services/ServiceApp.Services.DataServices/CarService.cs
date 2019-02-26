@@ -23,18 +23,18 @@
             this.carOwnerReposotiry = carOwnerReposotiry;
         }
 
-        public IEnumerable<CarShortViewModel> All(string id)
+        public IEnumerable<CarShortViewModel> GetAll(string id)
         {
 
             var cars = this.carReposotiry.QueryObjectGraph(c => c.CarOwner.AutoService.Id == id, "CarOwner").ToList().Select(x => mapper.Map<CarShortViewModel>(x));
-            //var cars = this.carReposotiry.All().Where(c=>c.CarOwner.AutoService.Id == id).Select(x=>mapper.Map<CarShortViewModel>(x)).ToList();
+            
 
             return cars;
         }
 
         public async Task<int> Create(CarCreateViewModel input)
         {
-            var carOwner = carOwnerReposotiry.All().FirstOrDefault(x => x.Id == input.CarOwnerId);
+            var carOwner = carOwnerReposotiry.All().FirstOrDefault(x => x.Name == input.Name);
             var car = mapper.Map<Car>(input);
             car.CarOwner = carOwner;
 

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ServiceApp.Web.Models;
 
 namespace ServiceApp.Data.Migrations
 {
     [DbContext(typeof(ServiceAppContext))]
-    partial class ServiceAppContextModelSnapshot : ModelSnapshot
+    [Migration("20190223110155_AddNumenclatures")]
+    partial class AddNumenclatures
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -231,7 +233,11 @@ namespace ServiceApp.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("ServiceId");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("ServiceId");
 
                     b.ToTable("Nomenclatures");
                 });
@@ -466,8 +472,6 @@ namespace ServiceApp.Data.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<int>("NomenclatureId");
-
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256);
 
@@ -490,9 +494,6 @@ namespace ServiceApp.Data.Migrations
                     b.Property<int>("WarehouseId");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("NomenclatureId")
-                        .IsUnique();
 
                     b.HasIndex("NormalizedEmail")
                         .HasName("EmailIndex");
@@ -589,6 +590,13 @@ namespace ServiceApp.Data.Migrations
                         .HasForeignKey("PartId");
                 });
 
+            modelBuilder.Entity("ServiceApp.Data.Models.Nomenclature", b =>
+                {
+                    b.HasOne("ServiceApp.Web.Areas.Identity.Data.ServiceAppUser", "Service")
+                        .WithMany()
+                        .HasForeignKey("ServiceId");
+                });
+
             modelBuilder.Entity("ServiceApp.Data.Models.Obligation", b =>
                 {
                     b.HasOne("ServiceApp.Web.Areas.Identity.Data.ServiceAppUser", "Service")
@@ -669,7 +677,7 @@ namespace ServiceApp.Data.Migrations
                         .WithMany()
                         .HasForeignKey("DeliveryId");
 
-                    b.HasOne("ServiceApp.Data.Models.Nomenclature", "Nomenclature")
+                    b.HasOne("ServiceApp.Data.Models.Nomenclature")
                         .WithMany("Parts")
                         .HasForeignKey("NomenclatureId");
 
@@ -688,11 +696,6 @@ namespace ServiceApp.Data.Migrations
 
             modelBuilder.Entity("ServiceApp.Web.Areas.Identity.Data.ServiceAppUser", b =>
                 {
-                    b.HasOne("ServiceApp.Data.Models.Nomenclature", "Nomenclature")
-                        .WithOne("Service")
-                        .HasForeignKey("ServiceApp.Web.Areas.Identity.Data.ServiceAppUser", "NomenclatureId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("ServiceApp.Data.Models.Warehouse", "Warehouse")
                         .WithOne("Service")
                         .HasForeignKey("ServiceApp.Web.Areas.Identity.Data.ServiceAppUser", "WarehouseId")

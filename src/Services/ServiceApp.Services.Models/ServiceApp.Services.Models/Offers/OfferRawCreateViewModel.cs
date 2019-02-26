@@ -1,10 +1,10 @@
-﻿namespace ServiceApp.Services.Models.Offers
+﻿using ServiceApp.Data.Models;
+
+namespace ServiceApp.Services.Models.Offers
 {
     public class OfferRawCreateViewModel 
     {
-        public string PartDesciption { get; set; }
-
-        public decimal PartPrice { get; set; }
+        public string Part { get; set; }
 
         public int Count { get; set; }
         

@@ -18,6 +18,7 @@
         public DbSet<OfferRaw> OfferRaws { get; set; }
         public DbSet<OrderRaw> OrderRaws { get; set; }
         public DbSet<Obligation> Obligations { get; set; }
+        public DbSet<Nomenclature> Nomenclatures { get; set; }
 
 
 
@@ -33,6 +34,9 @@
 
             builder.Entity<Warehouse>()
                 .HasOne(w => w.Service).WithOne(s => s.Warehouse);
+
+            builder.Entity<Nomenclature>()
+                .HasOne(n => n.Service).WithOne(s => s.Nomenclature);
 
             builder.Entity<CarOwner>()
                 .HasOne(co => co.AutoService).WithMany(s => s.Clinets);

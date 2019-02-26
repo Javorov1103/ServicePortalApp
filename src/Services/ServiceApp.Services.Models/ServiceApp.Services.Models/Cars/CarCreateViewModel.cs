@@ -10,6 +10,6 @@
 
         public string VinNumber { get; set; }
 
-        public int CarOwnerId { get; set; }
+        public string Name { get; set; }
     }
 }

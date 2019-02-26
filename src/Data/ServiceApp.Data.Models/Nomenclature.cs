@@ -3,9 +3,9 @@
     using ServiceApp.Web.Areas.Identity.Data;
     using System.Collections.Generic;
 
-    public class Warehouse : BaseModel<int>
+    public class Nomenclature : BaseModel<int>
     {
-        public Warehouse()
+        public Nomenclature()
         {
             this.Parts = new List<Part>();
         }
